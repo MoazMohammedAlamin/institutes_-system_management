@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="pay_institutes" model="ir.sequence">
+            <field name="name">Institutes System</field>
+            <field name="code">pay.record</field>
+            <field name="prefix">Trained</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="sequence_institutes" model="ir.sequence">
+            <field name="name">Institutes System</field>
+            <field name="code">student.record</field>
+            <field name="prefix">Enrolled</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

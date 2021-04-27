@@ -1,0 +1,438 @@
+<odoo>
+    <data>
+        <record id="course_action" model="ir.actions.act_window">
+            <field name="name">Course</field>
+            <field name="res_model">course.record</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="course_form_view" model="ir.ui.view">
+            <field name="name">Course</field>
+            <field name="model">course.record</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="description"/>
+                            </group>
+                            <group>
+                                <field name="price"/>
+                                <field name="time_on"/>
+                                <field name="time_of"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                            <group>
+                                <field name="hours"/>
+                                <field name="hours_price"/>
+                            </group>
+                            <group>
+                                <field name="traineds"/>
+                                <field name="room_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="course_tree_view" model="ir.ui.view">
+            <field name="name">Course</field>
+            <field name="model">course.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="price"/>
+                    <field name="hours"/>
+                    <field name="hours_price"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="traineds"/>
+                    <field name="time_on"/>
+                    <field name="time_of"/>
+                    <field name="room_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="course_search_view" model="ir.ui.view">
+            <field name="name">Course</field>
+            <field name="model">course.record</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="traineds"/>
+                </search>
+            </field>
+        </record>
+        <record id="trained_action" model="ir.actions.act_window">
+            <field name="name">Trained</field>
+            <field name="res_model">trained.record</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="trained_form_view" model="ir.ui.view">
+            <field name="name">Trained</field>
+            <field name="model">trained.record</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="id_number"/>
+                                <field name="phone"/>
+                            </group>
+                            <group>
+                                <field name="address"/>
+                                <field name="email"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="trained_tree_view" model="ir.ui.view">
+            <field name="name">Trained</field>
+            <field name="model">trained.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="id_number"/>
+                    <field name="phone"/>
+                    <field name="address"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+        <record id="student_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="res_model">student.record</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">Student</field>
+            <field name="model">student.record</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" states="draft" type="object" string="confirm" class="oe_highlight"/>
+                        <button name="action_done" states="confirm" type="object" string="done" class="oe_highlight"/>
+                        <button name="action_cancel" states="done" type="object" string="cancel" class="oe_highlight"/>
+                        <button name="action_view_invoice" type="object" string="Create Invoice" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <h3><field name="code"/></h3>
+                        <hr/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="phone"/>
+                                <field name="Training_name"/>
+                            </group>
+                            <group>
+                                <field name="email"/>
+                                <field name="address"/>
+<!--                                <field name="std_price"/>-->
+                            </group>
+                        </group>
+                        <hr/>
+                        <notebook>
+                            <page string="Course Information">
+                               <group>
+                                   <group>
+                                       <field name="std_description"/>
+                                       <field name="std_start"/>
+                                   </group>
+                                   <group>
+                                       <field name="std_end"/>
+                                       <field name="std_price"/>
+                                   </group>
+                                   <group>
+                                       <field name="std_traineds"/>
+                                       <field name="std_room"/>
+                                   </group>
+                                   <group>
+                                       <field name="line_amount"/>
+                                       <field name="total"/>
+                                   </group>
+                                   <group>
+                                       <field name="std_time_on"/>
+                                       <field name="std_time_of"/>
+                                   </group>
+                               </group>
+                            </page>
+                        </notebook>
+<!--                       <notebook>-->
+<!--                            <page string="Course Information">-->
+<!--                                <field name="course_id"/>-->
+<!--                                <group class="oe_subtotal_footer oe_right">-->
+<!--                                    <field name="line_cost" widget="monetary"/>-->
+<!--                                    <field name="line_amount" widget="monetary"/>-->
+<!--                                    <field name="total" class="oe_subtotal_footer_separator" widget="monetary"/>-->
+<!--                                    <div class="oe_subtotal_footer_separator oe_inline">-->
+<!--                                        <label for="total"/>-->
+<!--                                        <field name="total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>-->
+<!--                                        <div class="oe_clear"/>-->
+<!--                                    </div>-->
+<!--                                </group>-->
+<!--                            </page>-->
+<!--                             <page string="Student Information">-->
+<!--                                <field name="student_infor_id">-->
+<!--                                   <tree editable="bottom">-->
+<!--                                       <field name="name"/>-->
+<!--                                       <field name="cost"/>-->
+<!--                                       <field name="amount"/>-->
+<!--                                       <field name="total"/>-->
+<!--                                       <field name="student_id" invisible="1"/>-->
+<!--                                   </tree>-->
+<!--                                </field>-->
+<!--                            </page>-->
+<!--                        </notebook>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="student_tree_view" model="ir.ui.view">
+            <field name="name">Student</field>
+            <field name="model">student.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="Training_name"/>
+                    <field name="std_start"/>
+                    <field name="std_end"/>
+                    <field name="std_time_on"/>
+                    <field name="std_time_of"/>
+                    <field name="std_price" sum="total"/>
+                    <field name="std_traineds"/>
+                    <field name="std_room"/>
+                    <field name="line_amount" sum="total"/>
+                    <field name="total" sum="total"/>
+                    <field name="state" invisible="0"/>
+<!--                    <field name="line_cost" sum="line_cost"/>-->
+<!--                    <field name="line_amount" sum="line_amount"/>-->
+<!--                    <field name="total" sum="total"/>-->
+                </tree>
+            </field>
+        </record>
+        <record id="student_search_view" model="ir.ui.view">
+            <field name="name">Student</field>
+            <field name="model">student.record</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="Training_name"/>
+                </search>
+            </field>
+        </record>
+<!--        <record id="internt_tree_view" model="ir.ui.view">-->
+<!--            <field name="name">course</field>-->
+<!--            <field name="model">course.record</field>-->
+<!--            <field name="inherit_id" ref="institutes_ system.student_tree_view"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="/tree/field[@name='name']" position="after">-->
+<!--					<field name="course_price"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="room_action" model="ir.actions.act_window">
+            <field name="name">Room</field>
+            <field name="res_model">room.record</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="room_form_view" model="ir.ui.view">
+            <field name="name">Room</field>
+            <field name="model">room.record</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                 <field name="responsible"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Room Information">
+                                <group>
+                                    <group>
+                                        <field name="size"/>
+                                        <field name="type"/>
+                                    </group>
+                                    <group>
+                                        <field name="seats"/>
+                                        <field name="seats_number"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="room_tree_view" model="ir.ui.view">
+            <field name="name">Room</field>
+            <field name="model">room.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="responsible"/>
+                    <field name="size"/>
+                    <field name="type"/>
+                    <field name="seats"/>
+                    <field name="seats_number"/>
+                </tree>
+            </field>
+        </record>
+<!--        <record id="employee_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Employee</field>-->
+<!--            <field name="res_model">hr.employee</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--        </record>-->
+<!--        <record id="employee_form_view" model="ir.ui.view">-->
+<!--            <field name="name">Employee</field>-->
+<!--            <field name="model">hr.employee</field>-->
+<!--            <field name="inherit_id" ref="hr.view_employee_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <field name="work_phone" position="replace"/>-->
+<!--                <field name="image_1920" position="replace"/>-->
+<!--                <field name="category_ids" position="replace"/>-->
+<!--                <xpath expr="//notebook/page[1]" position="replace"/>-->
+<!--                <xpath expr="//notebook/page[3]" position="replace"/>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="employee_action" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="res_model">employee.record</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="employee_form_view" model="ir.ui.view">
+            <field name="name">Employee</field>
+            <field name="model">employee.record</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="gender"/>
+                            </group>
+                            <group>
+                                <field name="department"/>
+                                <field name="position"/>
+                                <field name="salary"/>
+                                <field name="user_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="employee_tree_view" model="ir.ui.view">
+            <field name="name">Employee</field>
+            <field name="model">employee.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="department"/>
+                    <field name="position"/>
+                    <field name="salary" sum="total"/>
+                </tree>
+            </field>
+        </record>
+        <record id="employee_search_view" model="ir.ui.view">
+            <field name="name">Employee</field>
+            <field name="model">employee.record</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="department"/>
+                    <field name="position"/>
+                </search>
+            </field>
+        </record>
+        <record id="pay_action" model="ir.actions.act_window">
+            <field name="name">Payment</field>
+            <field name="res_model">pay.record</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="pay_form_view" model="ir.ui.view">
+            <field name="name">Payment</field>
+            <field name="model">pay.record</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_approve" string="Approve" type="object" class="oe_highlight"/>
+                        <button name="action_draft" string="Return To Draft" type="object" class="oe_highlight"/>
+                        <button name="action_view_payment" type="object" string="Create Invoice" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <h3><field name="code"/></h3>
+                        <group>
+                            <group>
+                            <field name="admin"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        </group>
+                        <notebook>
+                            <page string="Payment Information">
+                                <field name="payment_ids">
+                                    <tree editable="bottom">
+                                        <field name="pay_course"/>
+                                        <field name="pay_name"/>
+                                        <field name="pay_hours"/>
+                                        <field name="pay_hours_price"/>
+                                        <field name="pay_total"/>
+                                        <field name="pay_ids" invisible="1"/>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="line_pay_hours" widget="monetary"/>
+                                    <field name="line_pay_hours_price" widget="monetary"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline">
+                                        <label for="line_pay_total"/>
+                                        <field name="line_pay_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                        <div class="oe_clear"/>
+                                    </div>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="pay_tree_view" model="ir.ui.view">
+            <field name="name">Payment</field>
+            <field name="model">pay.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="date"/>
+                    <field name="line_pay_hours"/>
+                    <field name="line_pay_hours_price"/>
+                    <field name="line_pay_total" sum="line_pay_total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <menuitem name="Institutes System" id="system_root_menu"/>
+        <menuitem name="Registration Management" id="course_root" parent="system_root_menu" action="course_action"/>
+        <menuitem name="Add Trained" id="trained_root" parent="course_root" sequence="2" action="trained_action"/>
+        <menuitem name="Add Student" id="student_root" parent="course_root" sequence="3" action="student_action"/>
+        <menuitem name="Add Room" id="room_root" parent="course_root" sequence="4" action="room_action"/>
+        <menuitem name="Employee Management" id="employee_root" parent="system_root_menu" action="employee_action"/>
+        <menuitem name="Payment List" id="payment_root" parent="system_root_menu" action="pay_action"/>
+    </data>
+</odoo>

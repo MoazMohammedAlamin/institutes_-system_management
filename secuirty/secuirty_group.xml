@@ -1,0 +1,13 @@
+<odoo>
+    <record id="group_security_category" model="ir.module.category">
+        <field name="name">Institutes System Management</field>
+    </record>
+    <record id="group_security_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="group_security_category"/>
+    </record>
+    <record id="group_security_admin" model="res.groups">
+        <field name="name">Admin</field>
+        <field name="category_id" ref="group_security_category"/>
+    </record>
+</odoo>
